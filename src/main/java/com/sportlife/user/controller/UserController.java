@@ -18,7 +18,7 @@ import com.sportlife.user.service.IUserService;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-	//cuando nos comuniquemos entre capa ir con la interface para se sea desacoplado el codigo
+	//cuando nos comuniquemos entre capa ir con la interface para se sea desacoplado el codigo test
 	@Autowired
 	private IUserService iUserService;
 
