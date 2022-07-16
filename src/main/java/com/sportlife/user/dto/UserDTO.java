@@ -3,7 +3,6 @@ package com.sportlife.user.dto;
 import java.time.LocalDate;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -16,16 +15,16 @@ import lombok.NoArgsConstructor;
 public class UserDTO {
 
 	private Integer idUser;
-	@NotEmpty
-	@Size(min = 50, message = "firstName is required")
+	//@NotEmpty(message = "{firstName.notEmpty}")
+	@Size(min = 3, message = "{firstName.size}")
 	private String firstName;
 	private String secondName;
 	@NotNull
-	@Size(min = 5, message = "firstName is required")
+	@Size(min = 3, message = "{lastName.size}")
 	private String lastName;
 	private String secondSurname;
 	private String idTypeIdentification;
-	@Size(min = 10)
+	@Size(min = 10, max = 10, message = "{identification.size}")
 	private String identification;
 	private String phoneCell;
 	private String phoneHouse;
