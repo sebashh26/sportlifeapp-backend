@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,7 +55,7 @@ public class UserController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> save(@RequestBody UserDTO userDto) {
+	public ResponseEntity<Void> save(@Valid @RequestBody UserDTO userDto) {
 
 		User userSave = iUserService.save(modelMapper.map(userDto, User.class));
 		URI uriUserLocation = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -63,7 +65,7 @@ public class UserController {
 	}
 
 	@PutMapping
-	public ResponseEntity<User> update(@RequestBody UserDTO userDto) throws ModelNotFoundException {
+	public ResponseEntity<User> update(@Valid @RequestBody UserDTO userDto) throws ModelNotFoundException {
 		User user = iUserService.findById(userDto.getIdUser());
 		if (user == null) {
 			throw new ModelNotFoundException("ID NOT FOUND EXCEPTION: " + userDto.getIdUser());
