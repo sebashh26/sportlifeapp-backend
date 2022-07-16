@@ -44,7 +44,7 @@ public class User {
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 	@Column(nullable = false, length = 3)
-	private String idGender;
+	private String idSex;
 	@Column(nullable = false, length = 3)
 	private String status;
 	@Column(nullable = true, length = 15)
