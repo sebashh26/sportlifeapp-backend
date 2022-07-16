@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserDTO {
 
+	private Integer idUser;
 	private String firstName;
 	private String secondName;
 	private String lastName;
