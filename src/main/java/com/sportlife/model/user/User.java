@@ -1,25 +1,31 @@
-package com.sportlife.user.model;
+package com.sportlife.model.user;
 
 import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.sportlife.Enum.EnumState;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "USR_USER")
 public class User {
-	
+	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idUser;
@@ -46,7 +52,8 @@ public class User {
 	@Column(nullable = false, length = 3)
 	private String idSex;
 	@Column(nullable = false, length = 3)
-	private String status;
+	@Enumerated(EnumType.STRING)
+	private EnumState status;
 	@Column(nullable = true, length = 15)
 	private String blackList;
 	@Column(nullable = false, length = 50)
