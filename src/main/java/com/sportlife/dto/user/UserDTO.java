@@ -1,4 +1,4 @@
-package com.sportlife.user.dto;
+package com.sportlife.dto.user;
 
 import java.time.LocalDate;
 
@@ -9,13 +9,13 @@ import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO {
 
 	private Integer idUser;
-	//@NotEmpty(message = "{firstName.notEmpty}")
 	@Size(min = 3, message = "{firstName.size}")
 	private String firstName;
 	private String secondName;

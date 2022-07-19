@@ -1,7 +1,7 @@
-package com.sportlife.user.service;
+package com.sportlife.service.user;
 
+import com.sportlife.model.user.User;
 import com.sportlife.service.ICRUD;
-import com.sportlife.user.model.User;
 
 public interface IUserService extends ICRUD<User, Integer>  {
 	

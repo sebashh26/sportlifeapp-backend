@@ -1,4 +1,4 @@
-package com.sportlife.user.controller;
+package com.sportlife.controller.user;
 
 import java.net.URI;
 import java.util.List;
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.sportlife.dto.user.UserDTO;
 import com.sportlife.exception.ModelNotFoundException;
-import com.sportlife.user.dto.UserDTO;
-import com.sportlife.user.model.User;
-import com.sportlife.user.service.IUserService;
+import com.sportlife.model.user.User;
+import com.sportlife.service.user.IUserService;
 
 @RestController
 @RequestMapping("/users")

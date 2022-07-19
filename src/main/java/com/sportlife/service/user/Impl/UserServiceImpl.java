@@ -1,15 +1,15 @@
-package com.sportlife.user.service.Impl;
+package com.sportlife.service.user.Impl;
 
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sportlife.model.user.User;
 import com.sportlife.repo.IGenericRepo;
+import com.sportlife.repo.user.IUserRepo;
 import com.sportlife.service.impl.CRUDImpl;
-import com.sportlife.user.model.User;
-import com.sportlife.user.repo.IUserRepo;
-import com.sportlife.user.service.IUserService;
+import com.sportlife.service.user.IUserService;
 @Service
 public class UserServiceImpl extends CRUDImpl<User, Integer> implements IUserService{
 
