@@ -18,29 +18,4 @@ public class TypeDirectoryImpl extends CRUDImpl<TypeDirectory, String> implement
 	protected IGenericRepo<TypeDirectory, String> getRepo() {
 		return directoryRepo;
 	}
-	
-//
-//	@Override
-//	public TypeDirectory update(TypeDirectory t) {
-//		return iTypeDirectoryRepo.save(t);
-//	}
-//	//optinoal te prepara para posibles respuetas nulas
-//	@Override
-//	public TypeDirectory findById(Integer id) {
-//		Optional<TypeDirectory> op = iTypeDirectoryRepo.findById(id);
-//		return op.orElseGet(TypeDirectory :: new);
-//	}
-//
-//	@Override
-//	public List<TypeDirectory> findAll() {
-//		return iTypeDirectoryRepo.findAll();
-//	}
-//
-//	@Override
-//	public void delete(Integer id) {
-//		iTypeDirectoryRepo.deleteById(id);
-//	}
-
-	
-
 }

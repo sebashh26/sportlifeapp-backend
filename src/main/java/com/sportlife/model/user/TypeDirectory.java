@@ -7,7 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.sportlife.Enum.EnumState;
+import com.sportlife.Enum.EnumStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,6 +34,6 @@ public class TypeDirectory {
 	private Integer level;
 	@Column(nullable = false, length = 3)
 	@Enumerated(EnumType.STRING)
-	private EnumState status;
+	private EnumStatus status;
 
 }

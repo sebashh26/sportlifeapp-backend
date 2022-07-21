@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.sportlife.model.user.User;
-import com.sportlife.model.user.UserDirectory;
-import com.sportlife.model.user.UserDirectoryPK;	
+import com.sportlife.model.user.drop.UserDirectory;
+import com.sportlife.model.user.drop.UserDirectoryPK;	
 
 @SpringBootApplication
 public class SportlifeappBackendApplication {

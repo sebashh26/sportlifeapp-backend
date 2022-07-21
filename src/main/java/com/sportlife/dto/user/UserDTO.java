@@ -2,9 +2,13 @@ package com.sportlife.dto.user;
 
 import java.time.LocalDate;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.sportlife.Enum.EnumStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,7 +36,8 @@ public class UserDTO {
 	private String mail;
 	private LocalDate dateOfBirth;
 	private String idSex;
-	private String status;
+	@Enumerated(EnumType.STRING)
+	private EnumStatus status;
 	private String blackList;
 	private String password;
 	private byte[] imageUser;
