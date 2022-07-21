@@ -1,6 +1,7 @@
 package com.sportlife.dto.user;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.sportlife.Enum.EnumStatus;
 
@@ -10,18 +11,19 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class TypeDirectoryDTO {
-	
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class UserDirectoryDTO {
+
 	@EqualsAndHashCode.Include
+	private Integer idUser;
 	private String idTypeDirectory;
-	private String idTypeDirectoryParent;
-	@NotNull
-	private String code;
+	@Size(max=200, message = "{description.size}")
 	private String description;
 	@NotNull
-	private Integer level;
-	private EnumStatus status;	
+	@Size(max=3, message = "{description.size}")
+	private EnumStatus status;
+	@NotNull
+	private TypeDirectoryDTO typeDirectoryDTO;
 }

@@ -1,4 +1,4 @@
-package com.sportlife.model.user;
+package com.sportlife.model.user.drop;
 
 import java.io.Serializable;
 import java.util.Objects;

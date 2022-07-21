@@ -2,14 +2,14 @@ package com.sportlife.Enum;
 
 import org.springframework.util.StringUtils;
 
-public enum EnumState {
+public enum EnumYesNo {
 	
-	ACT("ACT", "active"),
-	INA("INA", "inactive");
+	Y("YES", "yes"),
+	N("NO", "no");
     private final String value;
     private final String label;
 	
-	EnumState(String value, String label){
+	EnumYesNo(String value, String label){
 		this.value= value;
 		this.label= label;
 	}
@@ -28,7 +28,7 @@ public enum EnumState {
      * @return la etiqueta asociada al valor.
      */
     public static String decodifitorValue(String value) {
-        for (EnumState e : EnumState.values()) {
+        for (EnumYesNo e : EnumYesNo.values()) {
             if (e.value.equals(value)) {
                 return e.label;
             }

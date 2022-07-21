@@ -6,12 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import com.sportlife.Enum.EnumState;
+import com.sportlife.Enum.EnumStatus;
+import com.sportlife.model.team.Player;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -53,7 +57,7 @@ public class User {
 	private String idSex;
 	@Column(nullable = false, length = 3)
 	@Enumerated(EnumType.STRING)
-	private EnumState status;
+	private EnumStatus status;
 	@Column(nullable = true, length = 15)
 	private String blackList;
 	@Column(nullable = false, length = 50)
@@ -72,5 +76,10 @@ public class User {
 	private String idCivilStatus;
 	@Column(nullable = true)
 	private Integer failegLoginAttempts;	
+	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user")//,orphanRemoval = true)if use orphane when delete user delete player,  we want not this in the project
+    @PrimaryKeyJoinColumn
+    private Player player;
+	
 	
 }

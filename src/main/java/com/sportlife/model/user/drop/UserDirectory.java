@@ -1,4 +1,4 @@
-package com.sportlife.model.user;
+package com.sportlife.model.user.drop;
 
 import java.util.Objects;
 
@@ -13,7 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
-import com.sportlife.Enum.EnumState;
+import com.sportlife.Enum.EnumStatus;
+import com.sportlife.model.user.TypeDirectory;
+import com.sportlife.model.user.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -46,7 +48,7 @@ public class UserDirectory {
 
 	@Column(nullable = false, length = 3)
 	@Enumerated(EnumType.STRING)
-	private EnumState status;
+	private EnumStatus status;
 
 	@Override
 	public int hashCode() {
