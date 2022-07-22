@@ -6,8 +6,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -76,7 +78,8 @@ public class Player {
 	@Enumerated(EnumType.STRING)
 	private EnumStatus status;
 	
-	@OneToOne
-	@JoinColumn(name = "id_user", referencedColumnName = "idUser")
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_user")
+	@MapsId// without value because use tehe same identifier of pk 
 	private User user;
 }

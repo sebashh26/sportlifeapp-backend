@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.sportlife.dto.player.PlayerDTO;
+import com.sportlife.dto.team.PlayerDTO;
 import com.sportlife.exception.ModelNotFoundException;
 import com.sportlife.model.team.Player;
 import com.sportlife.model.user.User;
@@ -43,11 +43,11 @@ public class PlayerController {
 	@GetMapping("/{id}")
 	public ResponseEntity<PlayerDTO> findById(@PathVariable("id") Integer id) throws ModelNotFoundException {
 		PlayerDTO playerDto;
-		Player user = iPlayerService.findById(id);
-		if (user == null) {
+		Player player = iPlayerService.findById(id);
+		if (player == null) {
 			throw new ModelNotFoundException("ID NOT FOUND EXCEPTION: " + id);
 		} else {
-			playerDto = modelMapper.map(user, PlayerDTO.class);
+			playerDto = modelMapper.map(player, PlayerDTO.class);
 		}
 		return new ResponseEntity<>(playerDto, HttpStatus.OK);
 	}
@@ -86,7 +86,6 @@ public class PlayerController {
 			throw new ModelNotFoundException("ID NOT FOUND EXCEPTION: " + id);
 		} else {
 			iPlayerService.delete(id);
-			//iPlayerService.flush();
 		}
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

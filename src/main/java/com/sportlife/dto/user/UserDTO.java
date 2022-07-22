@@ -12,13 +12,16 @@ import com.sportlife.Enum.EnumStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO {
 
+	@EqualsAndHashCode.Include
 	private Integer idUser;
 	@Size(min = 3, message = "{firstName.size}")
 	private String firstName;

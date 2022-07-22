@@ -6,16 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.sportlife.Enum.EnumStatus;
-import com.sportlife.model.team.Player;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -76,10 +72,10 @@ public class User {
 	private String idCivilStatus;
 	@Column(nullable = true)
 	private Integer failegLoginAttempts;	
-	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user")//,orphanRemoval = true)if use orphane when delete user delete player,  we want not this in the project
-    @PrimaryKeyJoinColumn
-    private Player player;
+	//no use because with fetch lazy the property follow behaviour like eager when consult player and is a blucke in this properties no optimus
+//	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user")//,orphanRemoval = true)if use orphane when delete user delete player,  we want not this in the project
+//    @PrimaryKeyJoinColumn
+//    private Player player;
 	
 	
 }
