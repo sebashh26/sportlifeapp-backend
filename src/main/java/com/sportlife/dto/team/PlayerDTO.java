@@ -1,4 +1,4 @@
-package com.sportlife.dto.player;
+package com.sportlife.dto.team;
 
 import java.math.BigDecimal;
 
