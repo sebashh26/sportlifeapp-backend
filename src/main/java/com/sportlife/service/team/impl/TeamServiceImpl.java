@@ -33,5 +33,6 @@ public class TeamServiceImpl extends CRUDImpl<Team, String> implements ITeamServ
 		teamPlayer.setTeam(team);
 		teamPlayer.setStatus(EnumStatus.ACT);		
 		return iTeamPlayerRepo.save(teamPlayer);
+		
 	}
 }
