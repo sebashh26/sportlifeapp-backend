@@ -21,14 +21,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.sportlife.dto.team.TeamDTO;
+import com.sportlife.dto.team.TeamPlayerDTO;
 import com.sportlife.exception.ModelNotFoundException;
+import com.sportlife.model.team.Player;
 import com.sportlife.model.team.Team;
 import com.sportlife.service.team.ITeamService;
 
 @RestController
 @RequestMapping("/teams")
 public class TeamController {
-	
+
 	@Autowired
 	private ITeamService iTeamService;
 
@@ -36,12 +38,16 @@ public class TeamController {
 	private ModelMapper modelMapper;
 
 	@GetMapping("/{id}")
+	//@Transactional
 	public ResponseEntity<TeamDTO> findById(@PathVariable("id") String id) throws ModelNotFoundException {
 		TeamDTO teamDto;
+		
 		Team team = iTeamService.findById(id);
 		if (team == null) {
 			throw new ModelNotFoundException("ID NOT FOUND EXCEPTION: " + id);
 		} else {
+//			TypeMap<Team, TeamDTO> propertyMapper = modelMapper.createTypeMap(Team.class, TeamDTO.class);
+//		    propertyMapper.addMappings(mapper -> mapper.skip(TeamDTO::setTeamPlayers));
 			teamDto = modelMapper.map(team, TeamDTO.class);
 		}
 		return new ResponseEntity<>(teamDto, HttpStatus.OK);
@@ -59,6 +65,15 @@ public class TeamController {
 		URI uriTeamLocation = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(teamSave.getIdTeam()).toUri();
 		return ResponseEntity.created(uriTeamLocation).build();
+	}
+
+	@PostMapping("/teamplayer")
+	public ResponseEntity<TeamPlayerDTO> saveTeamPlayer(@Valid @RequestBody TeamPlayerDTO teamPlayerDTO)
+			throws ModelNotFoundException {
+		Team team = modelMapper.map(teamPlayerDTO.getTeamDTO(), Team.class);
+		Player player = modelMapper.map(teamPlayerDTO.getPlayerDTO(), Player.class);		
+		iTeamService.saveTeamPlayer(team, player);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@PutMapping
