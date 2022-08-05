@@ -29,53 +29,73 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idUser;
+	
 	@Column(nullable = false, length = 50)
 	private String firstName;
+	
 	@Column(nullable = true, length = 50)
 	private String secondName;
+	
 	@Column(nullable = false, length = 50)
 	private String lastName;
+	
 	@Column(nullable = true, length = 50)
 	private String secondSurname;
+	
 	@Column(nullable = false, length = 3)
 	private String idTypeIdentification;
+	
 	@Column(nullable = false, length = 15, unique = true)
 	private String identification;
+	
 	@Column(nullable = true, length = 15)
 	private String phoneCell;
+	
 	@Column(nullable = true, length = 15)
 	private String phoneHouse;
+	
 	@Column(nullable = false, length = 50)
 	private String mail;
+	
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
+	
 	@Column(nullable = false, length = 3)
 	private String idSex;
+	
 	@Column(nullable = false, length = 3)
 	@Enumerated(EnumType.STRING)
 	private EnumStatus status;
+	
 	@Column(nullable = true, length = 15)
 	private String blackList;
+	
 	@Column(nullable = false, length = 50)
-	private String password;
+	private String password;	
+	
 	@Column(nullable = false)
 	private LocalDate createdAt;
+	
 	@Column(nullable = false)
 	private LocalDate lastLogin;
+	
 	@Column(nullable = true)
 	private byte[] imageUser;
+	
 	@Column(nullable = true, length = 5)
 	private String idCountryOrigin;
+	
 	@Column(nullable = true, length = 5)
 	private String idCountryCurrent;
+	
 	@Column(nullable = false, length = 3)
 	private String idCivilStatus;
+	
 	@Column(nullable = true)
 	private Integer failegLoginAttempts;	
+	
 	//no use because with fetch lazy the property follow behaviour like eager when consult player and is a blucke in this properties no optimus
 //	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user")//,orphanRemoval = true)if use orphane when delete user delete player,  we want not this in the project
 //    @PrimaryKeyJoinColumn
 //    private Player player;
-	
-	
 }

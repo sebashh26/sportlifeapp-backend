@@ -65,12 +65,15 @@ public class UserController {
 	}
 
 	@PutMapping
-	public ResponseEntity<User> update(@Valid @RequestBody UserDTO userDto) throws ModelNotFoundException {
+	public ResponseEntity<UserDTO> update(@Valid @RequestBody UserDTO userDto) throws ModelNotFoundException {
 		User user = iUserService.findById(userDto.getIdUser());
 		if (user == null) {
 			throw new ModelNotFoundException("ID NOT FOUND EXCEPTION: " + userDto.getIdUser());
 		}
-		return new ResponseEntity<>(iUserService.update(modelMapper.map(userDto, User.class)), HttpStatus.OK);
+		userDto.setCreatedAt(user.getCreatedAt());
+		userDto.setLastLogin(user.getLastLogin());
+		user=iUserService.update(modelMapper.map(userDto, User.class));
+		return new ResponseEntity<>(modelMapper.map(user, UserDTO.class), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.sportlife.dto.team.PlayerDTO;
+import com.sportlife.dto.user.UserDTO;
 import com.sportlife.exception.ModelNotFoundException;
 import com.sportlife.model.team.Player;
 import com.sportlife.model.user.User;
@@ -30,13 +31,13 @@ import com.sportlife.service.user.IUserService;
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
-	
+
 	@Autowired
 	private IPlayerService iPlayerService;
 
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	@Autowired
 	private IUserService iUserService;
 
@@ -64,7 +65,9 @@ public class PlayerController {
 		if (user == null) {
 			throw new ModelNotFoundException("ID NOT FOUND EXCEPTION: " + playerDto.getIdUser());
 		}
-		Player playerSave = iPlayerService.save(modelMapper.map(playerDto, Player.class));
+		Player playerSave = modelMapper.map(playerDto, Player.class);
+		playerSave.setUser(user);
+		playerSave = iPlayerService.save(playerSave);
 		URI uriPlayerLocation = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(playerSave.getIdUser()).toUri();
 		return ResponseEntity.created(uriPlayerLocation).build();
@@ -72,10 +75,12 @@ public class PlayerController {
 
 	@PutMapping
 	public ResponseEntity<Player> update(@Valid @RequestBody PlayerDTO playerDto) throws ModelNotFoundException {
-		Player user = iPlayerService.findById(playerDto.getIdUser());
-		if (user == null) {
+		Player player = iPlayerService.findById(playerDto.getIdUser());
+		if (player == null) {
 			throw new ModelNotFoundException("ID NOT FOUND EXCEPTION: " + playerDto.getIdUser());
 		}
+		User user = player.getUser();
+		playerDto.setUserDTO(modelMapper.map(user, UserDTO.class));
 		return new ResponseEntity<>(iPlayerService.update(modelMapper.map(playerDto, Player.class)), HttpStatus.OK);
 	}
 

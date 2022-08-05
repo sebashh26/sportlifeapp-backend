@@ -15,8 +15,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -70,4 +72,7 @@ public class TeamDTO {
 	
 	@Size(max = 50, message = "{coach.size}")
 	private String coach;
+
+//	@JsonIgnore
+//	@ToString.Exclude private List<TeamPlayerDTO> teamPlayers;
 }

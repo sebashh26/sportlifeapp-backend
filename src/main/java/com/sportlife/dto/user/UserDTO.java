@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sportlife.Enum.EnumStatus;
 
 import lombok.AllArgsConstructor;
@@ -47,4 +48,8 @@ public class UserDTO {
 	private String idCountryOrigin;
 	private String idCountryCurrent;
 	private String idCivilStatus;
+	@JsonIgnore
+	private LocalDate createdAt;
+	@JsonIgnore
+	private LocalDate lastLogin;
 }
